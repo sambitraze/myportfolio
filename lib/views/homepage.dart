@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myportfolio/views/page1.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   Color _instagramIconColor = Colors.white;
   Color _linkedInIconColor = Colors.white;
   Color _githubIconColor = Colors.white;
+  Color _whatsappIconColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,10 @@ class _HomePageState extends State<HomePage> {
                                           : Colors.white;
                                     });
                                   },
-                                  onTap: () {},
+                                  onTap: ()async {
+                                    await launch("mailto:majhisambit2@gmail.com?subject=Reach%20Sambit&body=Hello%20Sambit");
+                                    
+                                  },
                                 )
                               : Container(),
                           MediaQuery.of(context).size.width > 900
@@ -127,7 +132,9 @@ class _HomePageState extends State<HomePage> {
                                           : Colors.white;
                                     });
                                   },
-                                  onTap: () {},
+                                  onTap: () async {
+                                    await launch("tel:+917751992236");
+                                  },
                                 )
                               : Container(),
                         ],
@@ -201,9 +208,13 @@ class _HomePageState extends State<HomePage> {
                                     value ? Colors.lightBlue : Colors.white;
                               });
                             },
-                            onTap: () {},
+                            onTap: () async {
+                              await launch("https://twitter.com/sambitraze2");
+                            },
                           ),
-                          SizedBox(width: 30,),
+                          SizedBox(
+                            width: 20,
+                          ),
                           InkWell(
                             child: FaIcon(
                               FontAwesomeIcons.instagram,
@@ -215,9 +226,32 @@ class _HomePageState extends State<HomePage> {
                                     value ? Colors.redAccent : Colors.white;
                               });
                             },
-                            onTap: () {},
+                            onTap: () async {
+                              await launch("https://instagram.com/sambitraze");
+                            },
                           ),
-                          SizedBox(width: 30,),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          InkWell(
+                            child: FaIcon(
+                              FontAwesomeIcons.whatsapp,
+                              color: _whatsappIconColor,
+                            ),
+                            onHover: (value) {
+                              setState(() {
+                                _whatsappIconColor =
+                                    value ? Colors.lightGreen : Colors.white;
+                              });
+                            },
+                            onTap: () async {
+                              await launch(
+                                  "https://api.whatsapp.com/send?phone=+917751992236");
+                            },
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
                           InkWell(
                             child: FaIcon(
                               FontAwesomeIcons.linkedin,
@@ -229,9 +263,14 @@ class _HomePageState extends State<HomePage> {
                                     value ? Colors.indigoAccent : Colors.white;
                               });
                             },
-                            onTap: () {},
+                            onTap: () async {
+                              await launch(
+                                  "https://www.linkedin.com/in/sambitraze/");
+                            },
                           ),
-                          SizedBox(width: 30,),
+                          SizedBox(
+                            width: 20,
+                          ),
                           InkWell(
                             child: FaIcon(
                               FontAwesomeIcons.facebook,
@@ -243,9 +282,14 @@ class _HomePageState extends State<HomePage> {
                                     value ? Colors.blue[700] : Colors.white;
                               });
                             },
-                            onTap: () {},
+                            onTap: () async {
+                              await launch(
+                                  "https://www.facebook.com/sambitraze/");
+                            },
                           ),
-                          SizedBox(width: 30,),
+                          SizedBox(
+                            width: 20,
+                          ),
                           InkWell(
                             child: FaIcon(
                               FontAwesomeIcons.github,
@@ -257,7 +301,10 @@ class _HomePageState extends State<HomePage> {
                                     value ? Colors.green : Colors.white;
                               });
                             },
-                            onTap: () {},
+                            onTap: () async {
+                              await launch(
+                                  "https://www.github.com/sambitraze/");
+                            },
                           ),
                         ],
                       )
